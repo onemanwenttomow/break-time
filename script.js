@@ -4,17 +4,14 @@ document.getElementById('break').addEventListener('click', function() {
     var hour = d.getHours();
     var minute = d.getMinutes();
     var endOfBreakTime = getEndOfbreakTime(hour, minute + Number(lengthOfBreak));
-
-    console.log(
-        endOfBreakTime
-    );
+    var meetBackHtml = '<h1>Meet back at: <span id="meetback">' + endOfBreakTime +'</span></h1>';
+    document.getElementById('meet-at').innerHTML = meetBackHtml;
 });
 
 function getEndOfbreakTime(hour, mins) {
-    if (mins > 59) {
-        if ((mins - 60) < 10) {
-            return (hour + 1) + ':0' + (mins - 60);
-        }
+    if (mins > 59 && (mins - 60) < 10) {
+        return (hour + 1) + ':0' + (mins - 60);
+    } else if (mins > 59) {
         return (hour + 1) + ':' + (mins - 60);
     }
     return hour + ':' + mins;

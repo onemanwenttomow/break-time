@@ -22,12 +22,23 @@ h2 {
     font-size: 3rem;
 }
 
-.minutes {
+img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15vh;
+}
+
+.inline {
     display: inline-block;
 }
 
-span {
+#break {
     font-family: 'IBM Plex Mono', monospace;
+}
+
+#meetback {
+    color: #FFADB9;
 }
 
 input[type="number"] {
