@@ -20,6 +20,9 @@ h1 {
 
 h2 {
     font-size: 3rem;
+}
+
+.minutes {
     display: inline-block;
 }
 
@@ -29,11 +32,12 @@ span {
 
 input[type="number"] {
     background-color: #3F0097;
-    color: #FFF;
+    color: #FFADB9;
+    font-weight: bold;
     padding: 0;
     margin: 0;
     border: none;
-    font-size: 3rem;
-    width: 7.8vw;
+    font-size: 4rem;
+    width: 90px;
     text-align: right;
 }
