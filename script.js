@@ -13,7 +13,9 @@ function addBreakEndTimeToHtml() {
 }
 
 function getEndOfbreakTime(hour, mins) {
-    if (mins > 59 && (mins - 60) < 10) {
+    if (mins < 10) {
+        return (hour + 1) + ':0' + mins;
+    } else if (mins > 59 && (mins - 60) < 10) {
         return (hour + 1) + ':0' + (mins - 60);
     } else if (mins > 59) {
         return (hour + 1) + ':' + (mins - 60);
