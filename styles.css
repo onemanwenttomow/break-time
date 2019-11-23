@@ -77,7 +77,7 @@ input[type="number"], input[type="number"]:focus {
 
 
 #inc-button {
-    left: 73px;
+    left: 71px;
     top: -41.5px;
     align-items: center;
     flex-direction: row-reverse;
@@ -85,7 +85,7 @@ input[type="number"], input[type="number"]:focus {
 }
 
 #dec-button {
-    left: 73px;
+    left: 71px;
     top: -2.5px;
     justify-content: flex-end;
 }
