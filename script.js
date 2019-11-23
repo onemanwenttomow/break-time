@@ -1,4 +1,8 @@
-document.getElementById('break').addEventListener('click', function() {
+document.getElementById('break').addEventListener('click', addBreakEndTimeToHtml);
+
+document.addEventListener('keypress', addBreakEndTimeToHtml);
+
+function addBreakEndTimeToHtml() {
     var lengthOfBreak = document.querySelector('input[type="number"]').value;
     var d = new Date();
     var hour = d.getHours();
@@ -6,7 +10,7 @@ document.getElementById('break').addEventListener('click', function() {
     var endOfBreakTime = getEndOfbreakTime(hour, minute + Number(lengthOfBreak));
     var meetBackHtml = '<h1>Meet back at: <span id="meetback">' + endOfBreakTime +'</span></h1>';
     document.getElementById('meet-at').innerHTML = meetBackHtml;
-});
+}
 
 function getEndOfbreakTime(hour, mins) {
     if (mins > 59 && (mins - 60) < 10) {
