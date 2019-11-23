@@ -62,6 +62,7 @@ input[type="number"], input[type="number"]:focus {
 
 .spinner-button {
     background-color: #3F0097;
+    color: #3F0097;
     position: absolute;
     display: flex;
     font-size: 1.2rem;
@@ -75,13 +76,19 @@ input[type="number"], input[type="number"]:focus {
     pointer-events: none;
 }
 
+.white-text {
+    color: #FFF;
+    transition: 0.3s;
+}
+
 
 #inc-button {
     left: 71px;
-    top: -41.5px;
-    align-items: center;
+    top: -56.5px;
+    align-items: flex-end;
     flex-direction: row-reverse;
-    justify-content: end;
+    justify-content: flex-start;
+    padding-bottom: 9px;
 }
 
 #dec-button {

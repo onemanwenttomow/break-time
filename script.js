@@ -2,6 +2,17 @@ document.getElementById('break').addEventListener('click', addBreakEndTimeToHtml
 
 document.addEventListener('keypress', addBreakEndTimeToHtml);
 
+var timeIncDecIndicators = document.querySelectorAll('.spinner-button');
+
+document.querySelector('input[type="number"]').addEventListener('mouseenter', function() {
+    timeIncDecIndicators[0].classList.add('white-text');
+    timeIncDecIndicators[1].classList.add('white-text');
+});
+document.querySelector('input[type="number"]').addEventListener('mouseleave', function() {
+    timeIncDecIndicators[0].classList.remove('white-text');
+    timeIncDecIndicators[1].classList.remove('white-text');
+});
+
 function addBreakEndTimeToHtml() {
     var lengthOfBreak = document.querySelector('input[type="number"]').value;
     var d = new Date();
