@@ -30,5 +30,6 @@ function getEndOfbreakTime(hour, mins) {
     } else if (mins > 59) {
         return (hour + 1) + ':' + (mins - 60);
     }
+
     return hour + ':' + mins;
 }
