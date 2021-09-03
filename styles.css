@@ -9,9 +9,9 @@ main {
     justify-content: center;
     align-items: center;
     overflow-y: hidden;
-    font-family: 'Poppins', sans-serif;
-    background-color: #3F0097;
-    color: #FFF;
+    font-family: "Poppins", sans-serif;
+    background-color: #3f0097;
+    color: #fff;
 }
 
 h1 {
@@ -34,17 +34,18 @@ img {
 }
 
 #break {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
 }
 
 #meetback {
-    color: #FFADB9;
+    color: #ffadb9;
 }
 
-input[type="number"], input[type="number"]:focus {
-    background-color: #3F0097;
-    color: #FFADB9;
-    caret-color:#3F0097;
+input[type="number"],
+input[type="number"]:focus {
+    background-color: #3f0097;
+    color: #ffadb9;
+    caret-color: #3f0097;
     font-weight: bold;
     padding: 0;
     margin: 0;
@@ -61,8 +62,8 @@ input[type="number"], input[type="number"]:focus {
 }
 
 .spinner-button {
-    background-color: #3F0097;
-    color: #3F0097;
+    background-color: #3f0097;
+    color: #3f0097;
     position: absolute;
     display: flex;
     font-size: 1.2rem;
@@ -77,10 +78,9 @@ input[type="number"], input[type="number"]:focus {
 }
 
 .white-text {
-    color: #FFF;
+    color: #fff;
     transition: 0.3s;
 }
-
 
 #inc-button {
     left: 71px;
@@ -95,4 +95,18 @@ input[type="number"], input[type="number"]:focus {
     left: 71px;
     top: -2.5px;
     justify-content: flex-end;
+}
+
+#progress-bar {
+    height: 10px;
+    margin: 16px 2px 0 2px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#progress {
+    background-color: #ffadb9;
+    width: 0%;
+    height: 100%;
+    transition: all 1s ease-out;
 }
