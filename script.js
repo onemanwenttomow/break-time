@@ -1,18 +1,13 @@
-document
-    .getElementById("break")
-    .addEventListener("click", addBreakEndTimeToHtml);
+var numInput = document.querySelector('input[type="number"]');
+var timeIncDecIndicators = document.querySelectorAll(".spinner-button");
+var breakEl = document.getElementById("break")
+var d, end, intervalId;
 
 window.addEventListener("load", addBreakEndTimeToHtml);
-
-let numInput = document.querySelector('input[type="number"]');
+breakEl.addEventListener("click", addBreakEndTimeToHtml);
 numInput.addEventListener("mouseenter", toggleIncDecIndicators);
 numInput.addEventListener("mouseleave", toggleIncDecIndicators);
 numInput.addEventListener("input", addBreakEndTimeToHtml);
-
-var timeIncDecIndicators = document.querySelectorAll(".spinner-button");
-var d;
-var end;
-var intervalId;
 
 function toggleIncDecIndicators() {
     timeIncDecIndicators[0].classList.toggle("white-text");
@@ -37,8 +32,8 @@ function addBreakEndTimeToHtml() {
 }
 
 function updateProgressBar() {
-    let bar = document.querySelector("#progress");
-    let progress = mapNum(Date.now(), d.getTime(), end.getTime(), 100, 0);
+    var bar = document.querySelector("#progress");
+    var progress = mapNum(Date.now(), d.getTime(), end.getTime(), 100, 0);
     bar.style.backgroundColor = `hsl(351.2, 100%, ${mapNum(
         progress,
         0,
@@ -51,7 +46,6 @@ function updateProgressBar() {
         bar.style.width = 0;
         return;
     }
-    // console.log("tick", `${progress}%`, Date.now(), d.getTime(), end.getTime());
     bar.style.width = `${mapNum(
         Date.now(),
         d.getTime(),
