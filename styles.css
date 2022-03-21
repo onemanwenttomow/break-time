@@ -22,15 +22,18 @@ h2 {
     font-size: 3rem;
 }
 
-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 15vh;
-}
 
 .inline {
     display: inline-block;
+}
+
+
+
+#logo {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    height: 24px;
 }
 
 #break {
