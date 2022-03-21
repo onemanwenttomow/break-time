@@ -2,6 +2,8 @@ document
     .getElementById("break")
     .addEventListener("click", addBreakEndTimeToHtml);
 
+window.addEventListener("load", addBreakEndTimeToHtml);
+
 let numInput = document.querySelector('input[type="number"]');
 numInput.addEventListener("mouseenter", toggleIncDecIndicators);
 numInput.addEventListener("mouseleave", toggleIncDecIndicators);
@@ -28,7 +30,7 @@ function addBreakEndTimeToHtml() {
         '<h1>Meet back at: <span id="meetback">' +
         end.toLocaleTimeString("en-GB", {
             hour: "2-digit",
-            minute: "2-digit",
+            minute: "2-digit"
         }) +
         "</span></h1>";
     document.getElementById("meet-at").innerHTML = meetBackHtml;
