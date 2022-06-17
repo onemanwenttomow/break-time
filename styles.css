@@ -1,115 +1,55 @@
 * {
-    margin: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1.4;
 }
 
-main {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-y: hidden;
-    font-family: "Poppins", sans-serif;
-    background-color: #3f0097;
-    color: #fff;
+body,
+html {
+  height: 100%;
 }
 
-h1 {
-    font-size: 4rem;
+body {
+  background-color: #3f0097;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4em;
 }
 
-h2 {
-    font-size: 3rem;
+main > div {
+  margin: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-.inline {
-    display: inline-block;
+.code {
+  font-family: "IBM Plex Mono", monospace;
 }
 
-
-
-#logo {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    height: 24px;
+.highlight {
+  color: #ffadb9;
 }
 
-#break {
-    font-family: "IBM Plex Mono", monospace;
+.logo {
+  position: fixed;
+  top: 16px;
+  left: 16px;
 }
 
-#meetback {
-    color: #ffadb9;
+.hidden {
+  display: none;
 }
 
-input[type="number"],
-input[type="number"]:focus {
-    background-color: #3f0097;
-    color: #ffadb9;
-    caret-color: #3f0097;
-    font-weight: bold;
-    padding: 0;
-    margin: 0;
-    border: none;
-    font-size: 4rem;
-    width: 90px;
-    text-align: center;
-    outline: none;
-    z-index: -1;
-}
-
-.input-container {
-    position: relative;
-}
-
-.spinner-button {
-    background-color: #3f0097;
-    color: #3f0097;
-    position: absolute;
-    display: flex;
-    font-size: 1.2rem;
-    z-index: 2;
-    height: 56px;
-    width: 20.5px;
-    line-height: 10px;
-    margin: 0px;
-    padding: 2px;
-    cursor: none;
-    pointer-events: none;
-}
-
-.white-text {
-    color: #fff;
-    transition: 0.3s;
-}
-
-#inc-button {
-    left: 71px;
-    top: -56.5px;
-    align-items: flex-end;
-    flex-direction: row-reverse;
-    justify-content: flex-start;
-    padding-bottom: 9px;
-}
-
-#dec-button {
-    left: 71px;
-    top: -2.5px;
-    justify-content: flex-end;
-}
-
-#progress-bar {
-    height: 10px;
-    margin: 16px 2px 0 2px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-#progress {
-    background-color: #ffadb9;
-    width: 0%;
-    height: 100%;
-    transition: all 1s ease-out;
+#number-input {
+  font-size: 2em;
+  padding: 16px;
+  color: white;
+  background-color: #2e016d;
+  width: 50%;
+  text-align: center;
+  font-weight: bold;
 }
