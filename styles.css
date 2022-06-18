@@ -40,8 +40,10 @@ main > div {
   left: 16px;
 }
 
-.hidden {
-  display: none;
+[x-cloak] { display: none; }
+
+section {
+  padding: 16px;
 }
 
 #number-input {
