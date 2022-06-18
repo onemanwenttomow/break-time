@@ -1,88 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <title>Break Time</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="styles.css" />
-	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&amp;display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,500&amp;display=swap" rel="stylesheet">
-	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-	<title>Break Time</title>
-</head>
+  <body
+    x-cloak
+    x-data="timerComponent()"
+    x-init="$nextTick(() =>$refs.timeInput.focus());"
+  >
+    <img class="logo" src="Spiced_Logo.svg" alt="spiced logo" />
+    <main>
+      <div>
+        <input
+          x-show="!start"
+          x-ref="timeInput"
+          x-model="time"
+          @keyup.enter="startCountDown()"
+          type="number"
+          name="number"
+          id="number-input"
+          min="4"
+          max="20"
+        />
+      </div>
+      <section x-show="start" x-transition>
+        <div class="progress-circle">
+          <div class="time-details">
+            <div class="code">&lt;br></div>
+            <div>
+              <span x-text="prettyEndTime" class="highlight"></span>
+            </div>
+          </div>
+          <svg height="450" width="450" class="circle">
+            <circle
+              :style="`animation: bar-fill  ${time * 60}s linear forwards;`"
+              cx="225"
+              cy="225"
+              r="195"
+              stroke="white"
+              stroke-width="60"
+              fill="none"
+            />
+          </svg>
+        </div>
+      </section>
+    </main>
+  </body>
 
-<body 
-	x-cloak 
-	x-data="timerComponent()"
-	x-init="$nextTick(() =>$refs.timeInput.focus());"
->
-	<img class="logo" src="Spiced_Logo.svg" alt="spiced logo" />
-	<main>
-		<div>
-			<input 
-				x-show="!start" 
-				x-ref="timeInput" 
-				x-model="time" 
-				@keyup.enter="startCountDown()" 
-				type="number"
-				name="number" 
-				id="number-input" 
-				min="4" 
-				max="20"
-			>
-		</div>
-		<section x-show="start" x-transition>
-			<div class="progress-circle">
-				<div class="time-details">
-					<div class="code">&lt;br></div>
-					<div>
-						<span x-text="prettyEndTime" class="highlight"></span>
-					</div>
-				</div>
-				<svg height="450" width="450" class="circle">
-					<circle 
-						:style="`animation: bar-fill  ${time * 60}s linear forwards;`"
-						cx="225" 
-						cy="225" 
-						r="195" 
-						stroke="white" 
-						stroke-width="60" 
-						fill="none" 
-					/>
-				</svg>
-			</div>
-	</main>
-</body>
-
-
-<script>
-function timerComponent() {
-	return {
-		start: false,
-		time: 10,
-		meetTime: new Date(),
-		prettyEndTime: new Date(),
-		startCountDown() {
-			this.start = true;
-			this.getEndTime();
-		},
-		getEndTime() {
-			this.meetTime = new Date(new Date().getTime() + this.time * 60000);
-			this.getPrettyEndTime()
-		},
-		getPrettyEndTime() {
-			this.prettyEndTime = this.meetTime.toLocaleTimeString(
-				"en-GB",
-				{
-					hour: "2-digit",
-					minute: "2-digit",
-				}
-			);
-		}
-	}
-}
-
-</script>
-
+  <script>
+    function timerComponent() {
+      return {
+        start: false,
+        time: 10,
+        meetTime: new Date(),
+        prettyEndTime: new Date(),
+        startCountDown() {
+          this.start = true;
+          this.getEndTime();
+        },
+        getEndTime() {
+          this.meetTime = new Date(new Date().getTime() + this.time * 60000);
+          this.getPrettyEndTime();
+        },
+        getPrettyEndTime() {
+          this.prettyEndTime = this.meetTime.toLocaleTimeString("en-GB", {
+            hour: "2-digit",
+            minute: "2-digit"
+          });
+        }
+      };
+    }
+  </script>
 </html>
