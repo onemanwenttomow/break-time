@@ -2,95 +2,91 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <title>Break Time</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="styles.css" />
+	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<title>Break Time</title>
 </head>
 
 <body 
-  x-cloak 
-  x-data="timerComponent()" 
-  x-init="$nextTick(() =>$refs.timeInput.focus()); $watch('percentage', percentageCheck)"
+	x-cloak 
+	x-data="timerComponent()"
+	x-init="$nextTick(() =>$refs.timeInput.focus()); $watch('percentage', percentageCheck)"
 >
-  <img class="logo" src="Spiced_Logo.svg" alt="spiced logo" />
-  <main>
-    <div>
-      <input 
-        x-show="!start" 
-        x-ref="timeInput" 
-        x-model="time" 
-        @keyup.enter="startCountDown()" 
-        type="number" 
-        name="number"
-        id="number-input" 
-        min="4" 
-        max="20"
-      >
-    </div>
-    <section x-show="start" x-transition>
-      <div>
-        <span x-text="time" class="highlight"></span> 
-        mins
-      </div>
-      <div class="code">&lt;br></div>
-        <div>
-          <span x-text="prettyEndTime" class="highlight"></span>
-        </div>
-        <div x-text="percentage"></div>
-      </div>
-  </main>
+	<img class="logo" src="Spiced_Logo.svg" alt="spiced logo" />
+	<main>
+		<div>
+			<input 
+				x-show="!start" 
+				x-ref="timeInput" 
+				x-model="time" 
+				@keyup.enter="startCountDown()" 
+				type="number"
+				name="number" 
+				id="number-input" 
+				min="4" 
+				max="20"
+			>
+		</div>
+		<section x-show="start" x-transition>
+			<div>
+				<span x-text="time" class="highlight"></span>
+				mins
+			</div>
+			<div class="code">&lt;br></div>
+			<div>
+				<span x-text="prettyEndTime" class="highlight"></span>
+			</div>
+			<div x-text="percentage"></div>
+			</div>
+	</main>
 </body>
 
 
 <script>
-  function timerComponent() {
-    return {
-      start: false, 
-      time: 10, 
-      meetTime: new Date(),
-      prettyEndTime: new Date(),
-      startTime: new Date(),
-      percentage: 100,
-      intervalId: 1,
-      startCountDown() {
-        this.start = true; 
-        this.startTime = new Date()
-        this.getEndTime(); 
-        this.countdown(); 
-      },
-      countdown() {
-        window.intervalId = setInterval(() => {
-          // console.log('this.meetTime: ',this.meetTime.getTime());
-          // console.log('this.startTime: ',this.startTime.getTime());
-          // console.log('new Date().getTime(): ',new Date().getTime());
-          const t = (new Date().getTime()) - (this.startTime.getTime())
-          console.log('t: ',t / 60000);
-          this.percentage -= 1;
-        }, 1000);
-      },
-      percentageCheck(percent) {
-        if (percent <= 0) {
-          clearInterval(this.intervalId)
-        }
-      },
-      getEndTime() {
-        this.meetTime = new Date(new Date().getTime() + this.time * 60000);
-        this.getPrettyEndTime()
-      },
-      getPrettyEndTime() {
-        this.prettyEndTime = this.meetTime.toLocaleTimeString(
-          "en-GB",
-          {
-            hour: "2-digit",
-              minute: "2-digit",
-          }
-        );
-      }
-    }
-  }
+	function timerComponent() {
+		return {
+			start: false,
+			time: 10,
+			meetTime: new Date(),
+			prettyEndTime: new Date(),
+			startTime: new Date(),
+			percentage: 100,
+			startCountDown() {
+				this.start = true;
+				this.startTime = new Date()
+				this.getEndTime();
+				this.countdown();
+			},
+			countdown() {
+				window.intervalId = setInterval(() => {
+					const t = new Date().getTime() - this.startTime.getTime()
+					const percentageComplete = Math.round(((t / 60000) / this.time) * 100);
+					this.percentage = 100 - percentageComplete;
+				}, 1000);
+			},
+			percentageCheck(percent) {
+				if (percent <= 0) {
+					clearInterval(this.intervalId)
+				}
+			},
+			getEndTime() {
+				this.meetTime = new Date(new Date().getTime() + this.time * 60000);
+				this.getPrettyEndTime()
+			},
+			getPrettyEndTime() {
+				this.prettyEndTime = this.meetTime.toLocaleTimeString(
+					"en-GB",
+					{
+						hour: "2-digit",
+						minute: "2-digit",
+					}
+				);
+			}
+		}
+	}
 
 </script>
 
