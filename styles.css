@@ -40,7 +40,9 @@ main > div {
   left: 16px;
 }
 
-[x-cloak] { display: none; }
+[x-cloak] {
+  display: none;
+}
 
 section {
   padding: 16px;
@@ -54,4 +56,49 @@ section {
   width: 50%;
   text-align: center;
   font-weight: bold;
+}
+
+.time-details {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.progress-circle {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  outline: 4px solid white;
+  outline-offset: -1px;
+}
+
+.progress-circle::after,
+.number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.progress-circle::after {
+  content: "";
+  width: 330px;
+  height: 330px;
+  border-radius: inherit;
+  outline: inherit;
+}
+
+.circle {
+  stroke-dasharray: 1230;
+  stroke-dashoffset: 1230;
+  transform: rotate(-90deg);
+}
+
+@keyframes bar-fill {
+  100% {
+    stroke-dashoffset: 0;
+  }
 }

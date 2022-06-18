@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="styles.css" />
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,500&amp;display=swap" rel="stylesheet">
 	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	<title>Break Time</title>
 </head>
@@ -13,7 +15,7 @@
 <body 
 	x-cloak 
 	x-data="timerComponent()"
-	x-init="$nextTick(() =>$refs.timeInput.focus()); $watch('percentage', percentageCheck)"
+	x-init="$nextTick(() =>$refs.timeInput.focus());"
 >
 	<img class="logo" src="Spiced_Logo.svg" alt="spiced logo" />
 	<main>
@@ -31,15 +33,24 @@
 			>
 		</div>
 		<section x-show="start" x-transition>
-			<div>
-				<span x-text="time" class="highlight"></span>
-				mins
-			</div>
-			<div class="code">&lt;br></div>
-			<div>
-				<span x-text="prettyEndTime" class="highlight"></span>
-			</div>
-			<div x-text="percentage"></div>
+			<div class="progress-circle">
+				<div class="time-details">
+					<div class="code">&lt;br></div>
+					<div>
+						<span x-text="prettyEndTime" class="highlight"></span>
+					</div>
+				</div>
+				<svg height="450" width="450" class="circle">
+					<circle 
+						:style="`animation: bar-fill  ${time * 60}s linear forwards;`"
+						cx="225" 
+						cy="225" 
+						r="195" 
+						stroke="white" 
+						stroke-width="60" 
+						fill="none" 
+					/>
+				</svg>
 			</div>
 	</main>
 </body>
@@ -52,25 +63,9 @@
 			time: 10,
 			meetTime: new Date(),
 			prettyEndTime: new Date(),
-			startTime: new Date(),
-			percentage: 100,
 			startCountDown() {
 				this.start = true;
-				this.startTime = new Date()
 				this.getEndTime();
-				this.countdown();
-			},
-			countdown() {
-				window.intervalId = setInterval(() => {
-					const t = new Date().getTime() - this.startTime.getTime()
-					const percentageComplete = Math.round(((t / 60000) / this.time) * 100);
-					this.percentage = 100 - percentageComplete;
-				}, 1000);
-			},
-			percentageCheck(percent) {
-				if (percent <= 0) {
-					clearInterval(this.intervalId)
-				}
 			},
 			getEndTime() {
 				this.meetTime = new Date(new Date().getTime() + this.time * 60000);
