@@ -57,31 +57,31 @@
 
 
 <script>
-	function timerComponent() {
-		return {
-			start: false,
-			time: 10,
-			meetTime: new Date(),
-			prettyEndTime: new Date(),
-			startCountDown() {
-				this.start = true;
-				this.getEndTime();
-			},
-			getEndTime() {
-				this.meetTime = new Date(new Date().getTime() + this.time * 60000);
-				this.getPrettyEndTime()
-			},
-			getPrettyEndTime() {
-				this.prettyEndTime = this.meetTime.toLocaleTimeString(
-					"en-GB",
-					{
-						hour: "2-digit",
-						minute: "2-digit",
-					}
-				);
-			}
+function timerComponent() {
+	return {
+		start: false,
+		time: 10,
+		meetTime: new Date(),
+		prettyEndTime: new Date(),
+		startCountDown() {
+			this.start = true;
+			this.getEndTime();
+		},
+		getEndTime() {
+			this.meetTime = new Date(new Date().getTime() + this.time * 60000);
+			this.getPrettyEndTime()
+		},
+		getPrettyEndTime() {
+			this.prettyEndTime = this.meetTime.toLocaleTimeString(
+				"en-GB",
+				{
+					hour: "2-digit",
+					minute: "2-digit",
+				}
+			);
 		}
 	}
+}
 
 </script>
 
