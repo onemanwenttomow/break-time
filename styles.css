@@ -53,9 +53,15 @@ section {
   padding: 16px;
   color: white;
   background-color: #2e016d;
-  width: 50%;
+  width: 220px;
   text-align: center;
   font-weight: bold;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 
 .time-details {

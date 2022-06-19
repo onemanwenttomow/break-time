@@ -72,6 +72,11 @@
         meetTime: new Date(),
         prettyEndTime: new Date(),
         startCountDown() {
+					if (this.time > 59) {
+						return alert("That break is way too long... please try something less than an hour")
+					} else if (this.time <= 0) {
+						return alert("Some amount of break time is required...")
+					} 
           this.start = true;
           this.getEndTime();
         },
