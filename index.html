@@ -23,26 +23,26 @@
   <body
     x-cloak
     x-data="timerComponent()"
-    x-init="$nextTick(() =>$refs.timeInput.focus());"
+    x-init="$nextTick(() =>$refs.timeInput.focus()); startCountDown()"
   >
     <img class="logo" src="Spiced_Logo.svg" alt="spiced logo" />
     <main>
-      <div>
-        <input
-          x-show="!start"
-          x-ref="timeInput"
-          x-model="time"
-          @keyup.enter="startCountDown()"
-          type="number"
-          name="number"
-          id="number-input"
-          min="4"
-          max="20"
-        />
-      </div>
-      <section x-show="start" x-transition>
+      
+      <section x-transition>
         <div class="progress-circle">
           <div class="time-details">
+            <div>
+              <input
+                x-ref="timeInput"
+                x-model="time"
+                @change="startCountDown()"
+                type="number"
+                name="number"
+                id="number-input"
+                min="4"
+                max="20"
+              />
+            </div>
             <div class="code">&lt;br></div>
             <div>
               <span x-text="prettyEndTime" class="highlight"></span>
@@ -50,7 +50,7 @@
           </div>
           <svg height="450" width="450" class="circle">
             <circle
-              :style="`animation: bar-fill  ${time * 60}s linear forwards;`"
+              :style="animation"
               cx="225"
               cy="225"
               r="195"
@@ -67,18 +67,19 @@
   <script>
     function timerComponent() {
       return {
-        start: false,
         time: 10,
         meetTime: new Date(),
         prettyEndTime: new Date(),
+        animation: "",
         startCountDown() {
 					if (this.time > 59) {
 						return alert("That break is way too long... please try something less than an hour")
 					} else if (this.time <= 0) {
 						return alert("Some amount of break time is required...")
 					} 
-          this.start = true;
           this.getEndTime();
+          this.animation = "";
+          setTimeout(() => this.animation = `animation: bar-fill  ${this.time * 60}s linear forwards;`,50);
         },
         getEndTime() {
           this.meetTime = new Date(new Date().getTime() + this.time * 60000);
